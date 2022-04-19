@@ -1,6 +1,6 @@
 let socket = io()
 let messages = document.querySelector('section ul')
-let input = document.querySelector('input')
+let input = document.querySelector('#chat')
 
 document.querySelector('form').addEventListener('submit', event => {
   event.preventDefault()
