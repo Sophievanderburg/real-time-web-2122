@@ -15,8 +15,12 @@ app.get("/", (req, res)=>{
     res.render('index')
 })
 
-app.get("/chat", (req, res)=>{
-    res.render('chat')
+app.get("/chat/?name=:name", (req, res)=>{
+    console.log(req)
+    res.render('chat', {
+        data: "data",
+        name: req.params.name
+    })
 })
 
 io.on('connection', (socket) => {
@@ -34,3 +38,7 @@ io.on('connection', (socket) => {
 http.listen(port, () => {
   console.log('listening on port ', port)
 })
+
+
+/*naam meegeven*/
+let users = []
