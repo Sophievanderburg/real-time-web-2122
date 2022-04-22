@@ -12,15 +12,7 @@ app.set('views', './views');
 app.use(express.static(path.resolve('public')))
 
 app.get("/", (req, res)=>{
-    res.render('index')
-})
-
-app.get("/chat/?name=:name", (req, res)=>{
-    console.log(req)
-    res.render('chat', {
-        data: "data",
-        name: req.params.name
-    })
+    res.render('chat')
 })
 
 io.on('connection', (socket) => {
