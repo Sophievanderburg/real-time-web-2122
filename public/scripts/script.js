@@ -1,16 +1,22 @@
 let socket = io()
-let messages = document.querySelector('section ul')
-let input = document.querySelector('#chat')
 
-document.querySelector('form').addEventListener('submit', event => {
-  event.preventDefault()
-  if (input.value) {
-    socket.emit('message', input.value)
-    input.value = ''
-  }
-})
+const radioButton = document.querySelectorAll('input["type=radio"]')
+const forms = document.querySelectorAll('form')
 
-socket.on('message', message => {
-  messages.appendChild(Object.assign(document.createElement('li'), { textContent: message }))
-  messages.scrollTop = messages.scrollHeight
-})
+function ignoreSubmit (){
+  forms.forEach((form)=>{
+    form.addEventListener('submit', event => {
+      event.preventDefault()
+
+      //radioButton has class 'true'
+      if( ){
+        //reken het antwoord goed
+      } else{
+        //reken het antwoord goed
+      }
+
+
+    })
+  })
+}
+ignoreSubmit()

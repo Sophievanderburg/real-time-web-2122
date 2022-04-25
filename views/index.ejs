@@ -4,13 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/style.css">
-    <title>Chat functie</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+
+    <title>Trivia: Music quiz</title>
 </head>
 <body>
+    <header>
+        <h1>Trivia: Music quiz</h1>
+    </header>
     <main>
-        <h1>trivia</h1>
+        <ol>
+            <% data.forEach(function(question) { %>   
+                <li> 
+                    <p> <%- question.question %></p>
+                    <form action="" class="form">
+                        <div>
+                            <input type="radio" name="vraag" id="<%- question.correct_answer %>" class="true"><label for="<%- question.correct_answer %>"><%- question.correct_answer %></label>
+                        </div>
+
+                        <% question.incorrect_answers.forEach(function(awnser, i) { %>
+                            <div>
+                                <input type="radio" name="vraag" id="<%- awnser %>"><label for="<%- awnser %>"><%- awnser %></label> 
+                            </div>   
+                        <% }) %>
+                        
+                        <input type="submit" value="Check het antwoord">
+                    </form>
+
+                </li>
+            <% }) %>
+        </ol>
     </main>
     
     <script src="/socket.io/socket.io.js"></script>
+    <script src="scripts/script.js"></script>
 </body>
 </html>
