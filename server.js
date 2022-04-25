@@ -12,7 +12,7 @@ app.set('views', './views');
 app.use(express.static(path.resolve('public')))
 
 app.get("/", (req, res)=>{
-    res.render('chat')
+    res.render('index')
 })
 
 io.on('connection', (socket) => {
