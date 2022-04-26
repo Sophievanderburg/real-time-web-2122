@@ -11,50 +11,93 @@ body{
     height: 100vh;
 }
 
-h1{
-    color: white;
+.onzichtbaar{
+    display: none;
 }
 
-p, label, input{
+h1{
+    color: white;
+    font-size: 3em;
+}
+
+p, label, input, h3{
     font-size: 1.5em;
 }
 
 header{
     padding: 1em;
+    height: 17vh;
+}
+
+header ul{
+    display: flex;
+    list-style-type: none;
+}
+
+header ul li{
+    font-size: 1.5em;
+    margin-left: 0.5em;
+    padding:0 0.5em;
+    border-radius: 0.75em;
+    background-color: hotpink;
 }
 
 main{
+    height: 83vh;
     width: 100vw;
-
-}
-
-main > ol{
-    list-style-type: none;
-    padding: 2em;
-    display: inline-flex;
-    flex-direction: row;
     overflow: scroll;
 }
 
-main > ol > li{
+/* ------------------ index ------------------- */
+main section > form{
+    padding: 3em;
+    background-color: #9b7ef4;
+    margin: 5vh auto 0 auto;
+    border-radius: 2em;
+    width: 90vw;
+}
+
+main section > form input[type="text"]{
+    display: block;
+    margin: 0.5em 0;
+    padding: 0.75em 0;
+    border: 3px solid #6C4FC3 ;
+    padding-left: 2em;
+    border-radius: 0.25em;
+
+    width: 100%;
+}
+
+
+
+/* ------------------ quiz ------------------- */
+main section > ol{
+    list-style-type: none;
+    padding: 2em;
+    overflow: scroll;
+    display: inline-flex;
+}
+
+main section > ol > li{
     padding: 3em;
     background-color: #9b7ef4;
     margin-right: 2em;
     border-radius: 2em;
     width: 90vw;
+    max-width: 1100px;
 }
 
-main > ol > li p{
+main section > ol > li p{
     font-size: 1.75em;
 }
 
 /* antwoord opties */
-main > ol > li ol{
+main section > ol > li ol{
     list-style-type: upper-alpha;
     list-style-position: inside;
 }
 
-main > ol > li ol li{
+main section > ol > li ol li{
     margin-bottom: 0.5em;
 }
 
@@ -70,8 +113,7 @@ form input[type="radio"].true:checked + label{
     color: green;
 }
 
-
-form > div > label{
+form > div > div > label{
     display: block;
     margin-bottom: 0.5em;
     padding: 0.75em 0;
@@ -83,10 +125,12 @@ form > div > label{
     width: 100%;
 }
 
-form > div > label:hover{
+form > div > div > label:hover{
     background-color: #72b193;
 }
 
 input[type="submit"]{
     padding: 0.5em 1em;
 }
+
+

@@ -9,34 +9,50 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
 
-    <title>Trivia: Music quiz</title>
+    <title>Trivia Music quiz</title>
 </head>
 <body>
     <header>
-        <h1>Trivia: Music quiz</h1>
+        <h1>Trivia Music quiz</h1>
+        <ul>
+            <h3>Online:</h3>
+        </ul>
     </header>
     <main>
-        <ol>
-            <% data.forEach(function(question) { %>   
-                <li> 
-                    <p> <%- question.question %></p>
-                    <form action="" class="form">
-                        <div>
-                            <input type="radio" name="vraag" id="<%- question.correct_answer %>" class="true"><label for="<%- question.correct_answer %>"><%- question.correct_answer %></label>
-                        </div>
+        <section class="index">
+            <form action="" id="nameform">
+                <label for="name">What is your name?</label>
+                <input type="text" name="name" id="name">
+                <input type="submit" value="Start the quiz">
+            </form>
+        </section>
 
-                        <% question.incorrect_answers.forEach(function(awnser, i) { %>
+        <section class="quiz onzichtbaar">
+            <ol>
+                <% data.forEach(function(question, i) { %>   
+                    <li> 
+                        <p> <%- question.question %></p>
+                        <form action="" class="form">
                             <div>
-                                <input type="radio" name="vraag" id="<%- awnser %>"><label for="<%- awnser %>"><%- awnser %></label> 
-                            </div>   
-                        <% }) %>
-                        
-                        <input type="submit" value="Check het antwoord">
-                    </form>
-
-                </li>
-            <% }) %>
-        </ol>
+                                <div>
+                                    <input type="radio" name="vraag-<%= i + 1%>" id="<%- question.correct_answer %>" class="true"><label for="<%- question.correct_answer %>"><%- question.correct_answer %></label>
+                                </div>
+        
+                                <% question.incorrect_answers.forEach(function(awnser) { %>
+                                    <div>
+                                        <input type="radio" name="vraag-<%=i + 1%>" id="<%- awnser %>"><label for="<%- awnser %>"><%- awnser %></label> 
+                                    </div>   
+                                <% }) %>
+                            </div>
+                            
+                            <input type="submit" value="Next question">
+                        </form>
+    
+                    </li>
+                <% }) %>
+            </ol>
+        </section>
+        
     </main>
     
     <script src="/socket.io/socket.io.js"></script>
