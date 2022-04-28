@@ -9,7 +9,7 @@ let input = document.querySelector('#name')
 const questionForms = document.querySelectorAll(".form")
 
 let names = document.querySelector('header ul')
-
+let checkedInput = document.querySelector('input[type="radio"]:checked')
 
 // Name form
 nameForm.addEventListener('submit', event => {
@@ -37,7 +37,7 @@ function ignoreSubmit (){
 }
 ignoreSubmit()
 
-// randomize order of possible answers
+// randomize order of possible answers 
 const options = document.querySelectorAll(".quiz ol li form > div")
 
 function randomizeAnswers(){
@@ -50,3 +50,25 @@ function randomizeAnswers(){
 randomizeAnswers()
 
 
+function checkForm (){
+  questionForms.forEach((form)=>{
+    if(form.contains(checkedInput)){
+      console.log('niks ingvuld')
+    } else{
+      console.log('er is iets gevuld')
+    }
+  })
+}
+checkForm()
+
+function checkInForm(){
+  questionForms.forEach((form)=>{
+    form.addEventListener('change',() => {
+      if(form.contains(checkedInput)){
+        console.log('iets ingevuld')
+      } else{
+        console.log('niets ingevuld')
+      }
+    })
+  })
+}
