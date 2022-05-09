@@ -35,7 +35,7 @@
                         <form action="" class="form">
                             <div>
                                 <div>
-                                    <input type="radio" name="vraag-<%= i + 1%>" id="<%- question.correct_answer %>" class="true"><label for="<%- question.correct_answer %>"><%- question.correct_answer %></label>
+                                    <input type="radio" name="vraag-<%= i + 1%>" id="<%- question.correct_answer %><%=i + 1%>" class="true"><label for="<%- question.correct_answer %><%=i + 1%>"><%- question.correct_answer %></label>
                                 </div>
         
                                 <% question.incorrect_answers.forEach(function(awnser) { %>
@@ -50,6 +50,14 @@
     
                     </li>
                 <% }) %>
+            </ol>
+        </section>
+
+        <section class="ranking ">
+            <h2>Ranking list</h2>
+            <p>Your result: <span>0</span>/10</p>
+            <ol>
+                
             </ol>
         </section>
         

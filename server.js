@@ -40,8 +40,12 @@ function renderPagina (req, res){
 io.on('connection', (socket) => {
   console.log('a user connected')
 
-  socket.on('message', (message) => {
-    io.emit('message', message)
+  socket.on('name', (name) => {
+    io.emit('name', name)
+  })
+
+  socket.on('ranking', (ranking) => {
+    io.emit('ranking', ranking)
   })
 
   socket.on('disconnect', () => {

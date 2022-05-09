@@ -1,38 +1,84 @@
 let socket = io()
 
 const nameSection = document.querySelector(".index")
-const quizSection = document.querySelector(".quiz")
-
 const nameForm = document.querySelector("section > form")
 let input = document.querySelector('#name')
 
+
+const quizSection = document.querySelector(".quiz")
 const questionForms = document.querySelectorAll(".form")
 
+let goodAnswers
+let amountGoodAnswers
+
+const rankingSection = document.querySelector(".ranking")
+const rankingList = document.querySelector(".ranking > ol")
+const counter = document.querySelector(".ranking > p span")
+const result = document.querySelector(".ranking ol li p:last-of-type span")
+
 let names = document.querySelector('header ul')
-let checkedInput = document.querySelector('input[type="radio"]:checked')
 
 // Name form
 nameForm.addEventListener('submit', event => {
   event.preventDefault()
   if (input.value) {
-    socket.emit('message', input.value)
+    socket.emit('name', input.value)
     input.value = ''
     nameSection.classList.add("onzichtbaar")
     quizSection.classList.remove("onzichtbaar")
   }
 })
 
-socket.on('message', name => {
+socket.on('name', name => {
   names.appendChild(Object.assign(document.createElement('li'), { textContent: name }))
-  names.scrollTop = names.scrollHeight
+  rankingList.insertAdjacentHTML('afterbegin', 
+  `<li> 
+      <p>${name}</p>
+      <p><span></span>/10</p>
+  </li>`)
 })
 
+socket.on('ranking', amount => {
+  let rank = amount
+  result.innerHTML= "rank"
+})
+
+
+
+
+
+
+
+
+
+
+
+
 // questionform
+function countGoodAnswers(){
+  goodAnswers = document.querySelectorAll('input[type="radio"].true:checked')
+  amountGoodAnswers = goodAnswers.length
+  counter.innerHTML = amountGoodAnswers
+}
+
+function toRanking (){
+  let checkedInputs = document.querySelectorAll('input[type="radio"]:checked')
+  let checkennn = checkedInputs.length
+  if( checkennn > 9){
+    socket.emit('ranking', amountGoodAnswers)
+    quizSection.classList.add('onzichtbaar')
+    rankingSection.classList.remove('onzichtbaar')
+  }
+}
+
+/* ---------------------------------------------------------------------------------------------------- */
 function ignoreSubmit (){
   questionForms.forEach((form)=>{
     form.addEventListener('submit', event => {
       event.preventDefault()
     })
+    form.addEventListener('change', countGoodAnswers)
+    form.addEventListener('change', toRanking)
   })
 }
 ignoreSubmit()
@@ -48,27 +94,3 @@ function randomizeAnswers(){
   })
 }
 randomizeAnswers()
-
-
-function checkForm (){
-  questionForms.forEach((form)=>{
-    if(form.contains(checkedInput)){
-      console.log('niks ingvuld')
-    } else{
-      console.log('er is iets gevuld')
-    }
-  })
-}
-checkForm()
-
-function checkInForm(){
-  questionForms.forEach((form)=>{
-    form.addEventListener('change',() => {
-      if(form.contains(checkedInput)){
-        console.log('iets ingevuld')
-      } else{
-        console.log('niets ingevuld')
-      }
-    })
-  })
-}
