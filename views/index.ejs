@@ -40,7 +40,7 @@
         
                                 <% question.incorrect_answers.forEach(function(awnser) { %>
                                     <div>
-                                        <input type="radio" name="vraag-<%=i + 1%>" id="<%- awnser %>"><label for="<%- awnser %>"><%- awnser %></label> 
+                                        <input type="radio" name="vraag-<%=i + 1%>" id="<%- awnser %>" class="false"><label for="<%- awnser %>"><%- awnser %></label> 
                                     </div>   
                                 <% }) %>
                             </div>
@@ -53,7 +53,7 @@
             </ol>
         </section>
 
-        <section class="ranking ">
+        <section class="ranking onzichtbaar">
             <h2>Ranking list</h2>
             <p>Your result: <span>0</span>/10</p>
             <ol>

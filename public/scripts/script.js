@@ -52,8 +52,14 @@ socket.on('ranking', amount => {
 
 
 
-
-
+function disableForm(){
+  questionForms.forEach((form)=>{
+    form.addEventListener('change', event => {
+      form.style.setProperty('pointer-events', 'none')
+    })
+  })
+}
+disableForm()
 
 // questionform
 function countGoodAnswers(){

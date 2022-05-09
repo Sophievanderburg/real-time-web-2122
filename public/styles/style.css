@@ -111,6 +111,7 @@ form input[type="radio"]:checked + label{
 
 form input[type="radio"].true:checked + label{
     background-color: green;
+    pointer-events: none;
 }
 
 form > div > div > label{
