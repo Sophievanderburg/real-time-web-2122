@@ -14,7 +14,6 @@ let amountGoodAnswers
 const rankingSection = document.querySelector(".ranking")
 const rankingList = document.querySelector(".ranking > ol")
 const counter = document.querySelector(".ranking > p span")
-const result = document.querySelector(".ranking ol li p:last-of-type span")
 
 let names = document.querySelector('header ul')
 
@@ -39,8 +38,10 @@ socket.on('name', name => {
 })
 
 socket.on('ranking', amount => {
+  let result = document.querySelector(".ranking ol li p:last-of-type span")
+
   let rank = amount
-  result.innerHTML= "rank"
+  result.innerHTML= `${rank}`
 })
 
 
