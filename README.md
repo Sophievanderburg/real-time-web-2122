@@ -37,7 +37,7 @@ In this Web App you can make a music quiz with trivia questions. There are a vie
 At the beginning, the user is asked to fill in their name. This can be any name they want: their real name, a nickname or a made up name. Once the user filled in their name, the questions are shown and they can start making the quiz. 
 
 ### Online 
-Once the user filled in their name, the user is online. All users have a list of online users that will be updated everytime someone starts their game.
+Once the user filled in their name, the user is [online](#name-event). All users have a list of online users that will be updated everytime someone starts their game.
 The users can also see users that logged in before them. I did this by storing them in an 'online'-array. I push the filled in name and socket-id in this array. 
 
 
@@ -98,7 +98,7 @@ There are **2 kinds of questions**: true/false-quetions & ABCD-questions
 
 
 ## ⏱️ Real-Time Events
-### Name
+### Name event
 #### server.js
 ```
 socket.on('name', (name) => {
@@ -127,7 +127,7 @@ socket.on('name', user => {
 
 ```
 
-### Ranking
+### Ranking event
 #### server.js
 ```
 socket.on('ranking', (ranking) => {
@@ -144,7 +144,7 @@ socket.on('ranking', ranking => {
 })
 ```
 
-### disconnect/user left
+### disconnect/user left event
 #### server.js
 ```
 socket.on('disconnect', () => {
