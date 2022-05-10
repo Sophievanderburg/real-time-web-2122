@@ -17,7 +17,7 @@ const counter = document.querySelector(".ranking > p span")
 
 let names = document.querySelector('header ul')
 
-// Name form
+// Go to questions when name is filled in
 nameForm.addEventListener('submit', event => {
   event.preventDefault()
   if (input.value) {
@@ -28,30 +28,59 @@ nameForm.addEventListener('submit', event => {
   }
 })
 
-socket.on('name', name => {
-  names.appendChild(Object.assign(document.createElement('li'), { textContent: name }))
-  rankingList.insertAdjacentHTML('afterbegin', 
-  `<li> 
-      <p>${name}</p>
-      <p><span></span>/10</p>
+socket.on('name', user => {
+  //maakt list item aan in de online lijst
+  // names.appendChild(Object.assign(document.createElement('li'), { innerHTML: "<p id="+user.id+">"+user.username+"</p>" }))
+  
+  names.insertAdjacentHTML('beforeend', 
+  `<li id="text${user.id}"> 
+      <p>${user.username}</p>
+  </li>`)
+
+
+  //maakt list item aan in de ranking lijst
+  rankingList.insertAdjacentHTML('beforeend', 
+  `<li id="${user.id}"> 
+      <p>${user.username}</p>
+      <p><span>Still playing...      </span>/10</p>
   </li>`)
 })
 
-socket.on('ranking', amount => {
-  let result = document.querySelector(".ranking ol li p:last-of-type span")
+socket.on('ranking', ranking => {
+    let result = document.querySelector(`#${ranking.id} p:last-of-type span`)
+    //update waarde in ranking lijst
+    let rank = ranking.amount
+    result.innerHTML= `${rank}`
+})
 
-  let rank = amount
-  result.innerHTML= `${rank}`
+socket.on('user left', user => {
+  console.log(user.id);
+  document.querySelector(`#text${user.id}`).remove();
 })
 
 
 
+/* ---------------------------------------------------------------------------------------------------- */
+function questionFormActions (){
+  questionForms.forEach((form)=>{
+    form.addEventListener('change', countGoodAnswers)
+    form.addEventListener('change', toRanking)
+  })
+}
+questionFormActions()
 
+// randomize order of possible answers 
+const options = document.querySelectorAll(".quiz ol li form > div")
+function randomizeAnswers(){
+  options.forEach((answers)=>{
+    for (var i = answers.children.length; i >= 0; i--) {
+      answers.appendChild(answers.children[Math.random() * i | 0]);
+    }
+  })
+}
+randomizeAnswers()
 
-
-
-
-
+// disable form after answer is filled in
 function disableForm(){
   questionForms.forEach((form)=>{
     form.addEventListener('change', event => {
@@ -61,13 +90,14 @@ function disableForm(){
 }
 disableForm()
 
-// questionform
+// count the amount of good answers
 function countGoodAnswers(){
   goodAnswers = document.querySelectorAll('input[type="radio"].true:checked')
   amountGoodAnswers = goodAnswers.length
   counter.innerHTML = amountGoodAnswers
 }
 
+// Go to ranking if all questions are answered
 function toRanking (){
   let checkedInputs = document.querySelectorAll('input[type="radio"]:checked')
   let checkennn = checkedInputs.length
@@ -77,27 +107,3 @@ function toRanking (){
     rankingSection.classList.remove('onzichtbaar')
   }
 }
-
-/* ---------------------------------------------------------------------------------------------------- */
-function ignoreSubmit (){
-  questionForms.forEach((form)=>{
-    form.addEventListener('submit', event => {
-      event.preventDefault()
-    })
-    form.addEventListener('change', countGoodAnswers)
-    form.addEventListener('change', toRanking)
-  })
-}
-ignoreSubmit()
-
-// randomize order of possible answers 
-const options = document.querySelectorAll(".quiz ol li form > div")
-
-function randomizeAnswers(){
-  options.forEach((answers)=>{
-    for (var i = answers.children.length; i >= 0; i--) {
-      answers.appendChild(answers.children[Math.random() * i | 0]);
-    }
-  })
-}
-randomizeAnswers()

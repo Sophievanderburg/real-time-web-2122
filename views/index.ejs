@@ -16,6 +16,11 @@
         <h1>Trivia Music quiz</h1>
         <ul>
             <h3>Online:</h3>
+            <% online.forEach(name => { %>   
+             <li id="text<%- name.id %>">
+                 <p><%- name.username %></p>
+             </li>
+            <% }) %>
         </ul>
     </header>
     <main>
@@ -44,8 +49,6 @@
                                     </div>   
                                 <% }) %>
                             </div>
-                            
-                            <input type="submit" value="Next question">
                         </form>
     
                     </li>
