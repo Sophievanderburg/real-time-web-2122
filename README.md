@@ -208,7 +208,7 @@ Install and use this repo in a view simple steps
 1. Clone this repo with ``git clone https://github.com/Sophievanderburg/real-time-web-2122.git``
 2. Install all the used packages with ``npm install``
 3. Start the server with ``npm run dev``
-4. Open ``http://localhost:4242/`` in your favourite browser
+4. Open ``http://localhost:4242/`` in your favourite browser <br>
 Good luck! 🍀
 
 ## ℹ️ Sources
