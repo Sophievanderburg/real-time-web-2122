@@ -3,7 +3,7 @@
 ## Chosen Concept
 Trivia music quiz
 
-## Wishlist
+## :fountain: Wishlist
 
 #### Must have
 :white_check_mark: See who is online <br>
@@ -26,12 +26,12 @@ Trivia music quiz
 
 
 
-## What does this Web App do?
+## 🕹️ What does this Web App do?
 You can make a music quiz with trivia questions
 
 
 
-## Open Trivia API
+## ❓ Open Trivia API
 For this project I used the [open Trivia API](https://opentdb.com/api_config.php). This is a super simple API to use! Since it is an open API, you do not need an API key. The only thing you have to do is, fill in a form with question about what kind & how many question you want to fetch. Once you filled in that form, the site generates a link for you. How nice is that?! 😄
 
 ### Construction of the API
@@ -77,11 +77,11 @@ There are **2 kinds of questions**: true/false-quetions & ABCD-questions
 
 
 
-## Real-Time Events
+## ⏱️ Real-Time Events
 
-## Data Lifecycle Diagram
+## :arrows_counterclockwise: Data Lifecycle Diagram
 
-## Used Packages
+## 📦 Used Packages
 - EJS
 - Node-fetch
 - express
@@ -89,7 +89,7 @@ There are **2 kinds of questions**: true/false-quetions & ABCD-questions
 - node-dev
 
 
-## Install
+## ⤵️ Install
 
 
-## Sources
+## ℹ️ Sources
