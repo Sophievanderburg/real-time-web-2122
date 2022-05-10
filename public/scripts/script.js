@@ -29,20 +29,17 @@ nameForm.addEventListener('submit', event => {
 })
 
 socket.on('name', user => {
-  //maakt list item aan in de online lijst
-  // names.appendChild(Object.assign(document.createElement('li'), { innerHTML: "<p id="+user.id+">"+user.username+"</p>" }))
-  
+  //adds item to online-list  
   names.insertAdjacentHTML('beforeend', 
   `<li id="text${user.id}"> 
       <p>${user.username}</p>
   </li>`)
 
-
-  //maakt list item aan in de ranking lijst
+  //adds item to ranking
   rankingList.insertAdjacentHTML('beforeend', 
   `<li id="${user.id}"> 
       <p>${user.username}</p>
-      <p><span>Still playing...      </span>/10</p>
+      <p><span>Still playing...</span>/10</p>
   </li>`)
 })
 

@@ -155,6 +155,10 @@ input[type="submit"]{
     width: 90vw;
 }
 
+.ranking > p{
+    font-size: 10vw;
+}
+
 .ranking ol{
     margin-top: 1em;
     list-style-type: decimal;
