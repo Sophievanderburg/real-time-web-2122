@@ -1,4 +1,4 @@
-# Real-Time Web @cmda-minor-web 2021 - 2022
+
 <img width="300" alt="Schermafbeelding 2022-05-10 om 14 37 41" src="https://user-images.githubusercontent.com/70577898/167631100-474d2a57-5a38-4153-a075-a9e582cabf50.png">  <img width="300" alt="Schermafbeelding 2022-05-10 om 14 38 05" src="https://user-images.githubusercontent.com/70577898/167631113-ae40b0b0-0128-44b9-ac50-c55d8c623b3f.png">  <img width="300" alt="Schermafbeelding 2022-05-10 om 14 41 06" src="https://user-images.githubusercontent.com/70577898/167631128-b35cdd35-a4fe-4294-9b7f-88d065c0cc76.png">
 
 ## Three Concepts
@@ -208,3 +208,5 @@ socket.on('user left', user => {
 
 
 ## ℹ️ Sources
+- Example of a [sockets chat](https://github.com/ju5tu5/barebonechat) from Justus Sturkenboom
+- Sources of the course [real time web](https://github.com/cmda-minor-web/real-time-web-2122) @CMD minor: Webdesign & -development
