@@ -14,6 +14,7 @@ Trivia music quiz
 :white_check_mark: See how many questions are answered correctly <br>
 
 #### Should have
+:white_check_mark: Answered question can not be adjusted
 :white_check_mark: Results list 
 - [ ] Results list in order
 - [ ] Show right answer if the wrong one is answered
@@ -31,7 +32,7 @@ Trivia music quiz
 
 
 ## 🕹️ What does this Web App do?
-In this Web App you can make a music quiz with trivia questions. There are a view thing I would like to highlight.
+In this Web App you can make a music quiz with trivia questions. There are a view things I would like to highlight.
 
 ### Username
 At the beginning, the user is asked to fill in their name. This can be any name they want: their real name, a nickname or a made up name. Once the user filled in their name, the questions are shown and they can start making the quiz. 
@@ -39,19 +40,39 @@ At the beginning, the user is asked to fill in their name. This can be any name 
 ### Online 
 Once the user filled in their name, the user is [online](#name-event). All users have a list of online users that will be updated everytime someone starts their game.
 The users can also see users that logged in before them. I did this by storing them in an 'online'-array. I push the filled in name and socket-id in this array. 
-
-
+The user also sees it, when someone leaves the website. This is done with the [user left socket](#user-left-event)
 
 
 ### Quiz
+#### Randomify answer order
+At first, the first answer was always the right one, because I render the page with EJS. This is not very nice for the quiz so I wrote a function that randomizes the order. This way you can not know which answer is the right one.
+```
+const options = document.querySelectorAll(".quiz ol li form > div")
+function randomizeAnswers(){
+  options.forEach((answers)=>{
+    for (var i = answers.children.length; i >= 0; i--) {
+      answers.appendChild(answers.children[Math.random() * i | 0]);
+    }
+  })
+}
+randomizeAnswers()
+```
 
-### Result list
+#### Show if the answer is right or not
+When you click on an answer, you directly see if it is the right answer or not. The user sees a green or a red answer.<br>
+I did not have enough time to show the correct answer if the wrong one is answered. It would be nice for the users to see which one is right.
+
+### Result/ranking list
+### Count the right answers
+Every right answer (which is a radio buttons) has a class 'true'. With querySelectorAll, i select all the checked radiobuttons WITH the class 'true'. This returns a Nodelist, which is kind of an array, so the length of this list is the amount of good answers. This number is rendered on the page.
+
+### Update ranking list
+The quiz has 10 questions. So when 10 questions are filled in, the quiz is over and the ranking list will be updated with the [ranking-socket](#ranking-event).<br> 
+I did not have enough time to order the ranking-list. Of course this is kind of important for a ranking list. 😅
 
 
 
-
-
-## ❓ Open Trivia API
+## ❓ About the Open Trivia API
 For this project I used the [open Trivia API](https://opentdb.com/api_config.php). This is a super simple API to use! Since it is an open API, you do not need an API key. The only thing you have to do is, fill in a form with question about what kind & how many question you want to fetch. Once you filled in that form, the site generates a link for you. How nice is that?! 😄
 
 ### Construction of the API
@@ -95,9 +116,14 @@ There are **2 kinds of questions**: true/false-quetions & ABCD-questions
     }
 ```
 
+### Data model Open Trivia API
+<img width="1089" alt="Schermafbeelding 2022-05-10 om 16 10 25" src="https://user-images.githubusercontent.com/70577898/167649389-42734419-b9ae-4b30-8fda-9206669be2dd.png">
 
 
-## ⏱️ Real-Time Events
+## :arrows_counterclockwise: Data Lifecycle Diagram
+<img width="1116" alt="Schermafbeelding 2022-05-10 om 16 10 00" src="https://user-images.githubusercontent.com/70577898/167649187-bbd67375-37fc-4dc8-9667-b4a7785fd148.png">
+
+## ⏱️ Real-Time Events (sockets)
 ### Name event
 #### server.js
 ```
@@ -144,7 +170,7 @@ socket.on('ranking', ranking => {
 })
 ```
 
-### disconnect/user left event
+### User left event
 #### server.js
 ```
 socket.on('disconnect', () => {
@@ -170,7 +196,6 @@ socket.on('user left', user => {
 })
 ```
 
-## :arrows_counterclockwise: Data Lifecycle Diagram
 
 ## 📦 Used Packages
 - [EJS](https://www.npmjs.com/package/ejs)
