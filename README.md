@@ -4,10 +4,7 @@
 ## Three Concepts
 <img width="49%" alt="C1" src="https://user-images.githubusercontent.com/70577898/167667040-89cc3a62-e4e0-45bf-97e1-2e6e77488a51.png"><img width="49%" alt="C2" src="https://user-images.githubusercontent.com/70577898/167667046-57688ba4-2b58-4820-ae69-3785c38728e4.png"><img width="49%" alt="C3" src="https://user-images.githubusercontent.com/70577898/167667056-94e5ee5a-acb2-47bb-bd93-e6ff5ef13174.png">
 
-
-
-## Chosen Concept
-Trivia music quiz
+### Chosen Concept: Trivia music quiz
 
 ## :fountain: Wishlist
 
