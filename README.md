@@ -196,7 +196,6 @@ socket.on('user left', user => {
 })
 ```
 
-
 ## 📦 Used Packages
 - [EJS](https://www.npmjs.com/package/ejs)
 - [Node-fetch](https://www.npmjs.com/package/node-fetch)
@@ -205,7 +204,12 @@ socket.on('user left', user => {
 - [node-dev](https://www.npmjs.com/package/node-dev)
 
 ## ⤵️ Install
-
+Install and use this repo in a view simple steps
+1. Clone this repo with ``git clone https://github.com/Sophievanderburg/real-time-web-2122.git``
+2. Install all the used packages with ``npm install``
+3. Start the server with ``npm run dev``
+4. Open ``http://localhost:4242/`` in your favourite browser
+Good luck! 🍀
 
 ## ℹ️ Sources
 - Example of a [sockets chat](https://github.com/ju5tu5/barebonechat) from Justus Sturkenboom
