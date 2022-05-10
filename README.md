@@ -14,7 +14,7 @@ Trivia music quiz
 :white_check_mark: See how many questions are answered correctly <br>
 
 #### Should have
-:white_check_mark: Answered question can not be adjusted
+:white_check_mark: Answered question can not be adjusted <br>
 :white_check_mark: Results list 
 - [ ] Results list in order
 - [ ] Show right answer if the wrong one is answered
@@ -38,7 +38,7 @@ In this Web App you can make a music quiz with trivia questions. There are a vie
 At the beginning, the user is asked to fill in their name. This can be any name they want: their real name, a nickname or a made up name. Once the user filled in their name, the questions are shown and they can start making the quiz. 
 
 ### Online 
-Once the user filled in their name, the user is [online](#name-event). All users have a list of online users that will be updated everytime someone starts their game.
+Once the user filled in their name, the user is online through the [name socket](#name-event). All users have a list of online users that will be updated everytime someone starts their game.
 The users can also see users that logged in before them. I did this by storing them in an 'online'-array. I push the filled in name and socket-id in this array. 
 The user also sees it, when someone leaves the website. This is done with the [user left socket](#user-left-event)
 
@@ -63,11 +63,11 @@ When you click on an answer, you directly see if it is the right answer or not. 
 I did not have enough time to show the correct answer if the wrong one is answered. It would be nice for the users to see which one is right.
 
 ### Result/ranking list
-### Count the right answers
+#### Count the right answers
 Every right answer (which is a radio buttons) has a class 'true'. With querySelectorAll, i select all the checked radiobuttons WITH the class 'true'. This returns a Nodelist, which is kind of an array, so the length of this list is the amount of good answers. This number is rendered on the page.
 
-### Update ranking list
-The quiz has 10 questions. So when 10 questions are filled in, the quiz is over and the ranking list will be updated with the [ranking-socket](#ranking-event).<br> 
+#### Update ranking list
+The quiz has 10 questions. So when 10 questions are filled in, the quiz is over and the ranking list will be updated with the [ranking socket](#ranking-event).<br> 
 I did not have enough time to order the ranking-list. Of course this is kind of important for a ranking list. 😅
 
 
