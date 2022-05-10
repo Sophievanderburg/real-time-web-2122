@@ -1,7 +1,11 @@
 # 🎵 Triva music quizzz
-<img width="300" alt="Schermafbeelding 2022-05-10 om 14 37 41" src="https://user-images.githubusercontent.com/70577898/167631100-474d2a57-5a38-4153-a075-a9e582cabf50.png">  <img width="300" alt="Schermafbeelding 2022-05-10 om 14 38 05" src="https://user-images.githubusercontent.com/70577898/167631113-ae40b0b0-0128-44b9-ac50-c55d8c623b3f.png">  <img width="300" alt="Schermafbeelding 2022-05-10 om 14 41 06" src="https://user-images.githubusercontent.com/70577898/167631128-b35cdd35-a4fe-4294-9b7f-88d065c0cc76.png">
+<img width="49%" alt="Schermafbeelding 2022-05-10 om 14 37 41" src="https://user-images.githubusercontent.com/70577898/167631100-474d2a57-5a38-4153-a075-a9e582cabf50.png">  <img width="49%" alt="Schermafbeelding 2022-05-10 om 14 38 05" src="https://user-images.githubusercontent.com/70577898/167631113-ae40b0b0-0128-44b9-ac50-c55d8c623b3f.png">  <img width="49%" alt="Schermafbeelding 2022-05-10 om 14 41 06" src="https://user-images.githubusercontent.com/70577898/167631128-b35cdd35-a4fe-4294-9b7f-88d065c0cc76.png">
 
 ## Three Concepts
+<img width="49%" alt="C1" src="https://user-images.githubusercontent.com/70577898/167667040-89cc3a62-e4e0-45bf-97e1-2e6e77488a51.png"><img width="49%" alt="C2" src="https://user-images.githubusercontent.com/70577898/167667046-57688ba4-2b58-4820-ae69-3785c38728e4.png"><img width="49%" alt="C3" src="https://user-images.githubusercontent.com/70577898/167667056-94e5ee5a-acb2-47bb-bd93-e6ff5ef13174.png">
+
+
+
 ## Chosen Concept
 Trivia music quiz
 
