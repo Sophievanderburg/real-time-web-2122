@@ -1,4 +1,6 @@
 # Real-Time Web @cmda-minor-web 2021 - 2022
+<img width="320" alt="Schermafbeelding 2022-05-10 om 14 37 41" src="https://user-images.githubusercontent.com/70577898/167631100-474d2a57-5a38-4153-a075-a9e582cabf50.png">  <img width="320" alt="Schermafbeelding 2022-05-10 om 14 38 05" src="https://user-images.githubusercontent.com/70577898/167631113-ae40b0b0-0128-44b9-ac50-c55d8c623b3f.png">  <img width="320" alt="Schermafbeelding 2022-05-10 om 14 41 06" src="https://user-images.githubusercontent.com/70577898/167631128-b35cdd35-a4fe-4294-9b7f-88d065c0cc76.png">
+
 ## Three Concepts
 ## Chosen Concept
 Trivia music quiz
@@ -12,11 +14,13 @@ Trivia music quiz
 :white_check_mark: See how many questions are answered correctly <br>
 
 #### Should have
-- [ ] Ranking list 
+:white_check_mark: Results list 
+- [ ] Results list in order
+- [ ] Show right answer if the wrong one is answered
+
 
 #### Could have
 - [ ] Question shown one by one
-- [ ] Show right answer if the wrong one is answered
 - [ ] See a leaderboard before you are doing the quiz yourself.
 
 #### Want to have
@@ -27,7 +31,23 @@ Trivia music quiz
 
 
 ## 🕹️ What does this Web App do?
-You can make a music quiz with trivia questions
+In this Web App you can make a music quiz with trivia questions. There are a view thing I would like to highlight.
+
+### Username
+At the beginning, the user is asked to fill in their name. This can be any name they want: their real name, a nickname or a made up name. Once the user filled in their name, the questions are shown and they can start making the quiz. 
+
+### Online 
+Once the user filled in their name, the user is online. All users have a list of online users that will be updated everytime someone starts their game.
+The users can also see users that logged in before them. I did this by storing them in an 'online'-array. I push the filled in name and socket-id in this array. 
+
+
+
+
+### Quiz
+
+### Result list
+
+
 
 
 
@@ -78,16 +98,86 @@ There are **2 kinds of questions**: true/false-quetions & ABCD-questions
 
 
 ## ⏱️ Real-Time Events
+### Name
+#### server.js
+```
+socket.on('name', (name) => {
+    let object = {username: name , id: socket.id}
+    online.push(object)
+    io.emit('name', {username: name , id: socket.id})
+  })
+```
+#### script.js
+```
+socket.on('name', user => {
+  //add item to online-list  
+  names.insertAdjacentHTML('beforeend', 
+  `<li id="text${user.id}"> 
+      <p>${user.username}</p>
+  </li>`)
+
+
+  //adds item to ranking
+  rankingList.insertAdjacentHTML('beforeend', 
+  `<li id="${user.id}"> 
+      <p>${user.username}</p>
+      <p><span>Still playing...</span>/10</p>
+  </li>`)
+})
+
+```
+
+### Ranking
+#### server.js
+```
+socket.on('ranking', (ranking) => {
+    io.emit('ranking', {id: socket.id, amount: ranking})
+  })
+```
+#### script.js
+```
+socket.on('ranking', ranking => {
+    let result = document.querySelector(`#${ranking.id} p:last-of-type span`)
+    //update waarde in ranking lijst
+    let rank = ranking.amount
+    result.innerHTML= `${rank}`
+})
+```
+
+### disconnect/user left
+#### server.js
+```
+socket.on('disconnect', () => {
+    io.emit('user left', {id: socket.id})
+
+    online = online.filter(element => {
+      if(element.id !== socket.id) {
+        // Voeg 'm toe aan de nieuwe array
+        return true;
+      } else {
+        // Filter 'm uit de nieuwe array
+        return false;
+      }
+    })
+    console.log('user disconnected')
+  })
+```
+#### script.js
+```
+socket.on('user left', user => {
+  console.log(user.id);
+  document.querySelector(`#text${user.id}`).remove();
+})
+```
 
 ## :arrows_counterclockwise: Data Lifecycle Diagram
 
 ## 📦 Used Packages
-- EJS
-- Node-fetch
-- express
-- socket.io
-- node-dev
-
+- [EJS](https://www.npmjs.com/package/ejs)
+- [Node-fetch](https://www.npmjs.com/package/node-fetch)
+- [express](https://www.npmjs.com/package/express)
+- [socket.io](https://www.npmjs.com/package/socket.io)
+- [node-dev](https://www.npmjs.com/package/node-dev)
 
 ## ⤵️ Install
 
