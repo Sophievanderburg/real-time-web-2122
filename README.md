@@ -18,6 +18,8 @@
 :white_check_mark: Answered question can not be adjusted <br>
 :white_check_mark: Results list 
 - [ ] Results list in order
+- [ ] Remember who are online
+- [ ] Remember the ranking list
 - [ ] Show right answer if the wrong one is answered
 
 
