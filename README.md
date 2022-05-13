@@ -16,9 +16,9 @@
 
 #### Should have
 :white_check_mark: Answered question can not be adjusted <br>
-:white_check_mark: Results list 
+:white_check_mark: Results list <br>
+:white_check_mark: Remember who are online<br>
 - [ ] Results list in order
-- [ ] Remember who are online
 - [ ] Remember the ranking list
 - [ ] Show right answer if the wrong one is answered
 
